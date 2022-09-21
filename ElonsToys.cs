@@ -3,15 +3,17 @@ using System;
 class RemoteControlCar
 {
 
-    static int Battery { get; set; }
-    static int Distance { get; set; }
+    int Battery;
+    int Distance;
     
 
     public static RemoteControlCar Buy()
     {
-        Battery = 100;
-        Distance = 0;
-        return new RemoteControlCar();
+        RemoteControlCar car = new RemoteControlCar(){
+            Battery = 100,
+            Distance = 0
+        };
+        return car;
     }
 
     public string DistanceDisplay() => $"Driven {Distance} meters";
@@ -20,12 +22,11 @@ class RemoteControlCar
 
     public void Drive()
     {
-        if(Battery >= 0)
+        while(Battery >= 0)
         {
             Distance += 20;
-            Battery --;
+            Battery -= 1;
         }
-
     }
     
 }
